@@ -24,7 +24,9 @@
       </ul>
     </nav>
     <div class="search-icon" onclick="toggleSearch()">🔍</div>
-    <input type="text" id="searchBox" placeholder="Search..." style="display: none;" />
+    <form id="searchForm" style="display:none;" onsubmit="handleSearch(event)">
+      <input type="text" id="searchBox" placeholder="Search..." />
+    </form>
   </header>
 
   <!-- Hero Section -->
@@ -92,115 +94,18 @@
   <!-- JS for Search & Dropdown -->
   <script>
     function toggleSearch() {
-      const searchBox = document.getElementById("searchBox");
-      searchBox.style.display = searchBox.style.display === "none" ? "inline-block" : "none";
+      const form = document.getElementById("searchForm");
+      form.style.display = form.style.display === "none" ? "block" : "none";
     }
 
-    function goToCategory(link) {
-      if (link) {
-        window.location.href = link;
+    function handleSearch(event) {
+      event.preventDefault();
+      const searchBox = document.getElementById("searchBox");
+      const query = searchBox.value.trim();
+      if (query) {
+        alert("You searched for: " + query);
+        // 🔍 Later: You can redirect to search results page here
       }
-    }
-  </script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AAFF@N</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">AAFF@N</div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="lifestyle.html">LIFESTYLE</a></li>
-        <li><a href="fashion.html">FASHION</a></li>
-        <li><a href="grooming.html">GROOMING</a></li>
-        <li><a href="wellness.html">WELLNESS</a></li>
-        <li><a href="relationships.html">RELATIONSHIPS</a></li>
-        <li><a href="technology.html">TECHNOLOGY</a></li>
-        <li><a href="sports.html">SPORTS</a></li>
-        <li><a href="gear.html">GEAR</a></li>
-      </ul>
-    </nav>
-    <div class="search-icon" onclick="toggleSearch()">🔍</div>
-    <input type="text" id="searchBox" placeholder="Search..." style="display: none;" />
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Affordable Ways To Finance Your First Vehicle As A Student</h1>
-    </div>
-  </section>
-
-  <!-- Latest Articles -->
-  <section class="latest">
-    <h2>THE LATEST</h2>
-    <div class="articles-grid">
-      <div class="article-card">
-        <img src="images/thumb1.jpg" alt="Article 1" />
-        <span class="category">TECHNOLOGY</span>
-        <div class="meta">By Admin · June 28, 2025</div>
-        <h3><a href="post.html">How AI Is Changing Modern Lifestyles</a></h3>
-      </div>
-
-      <div class="article-card">
-        <img src="images/thumb2.jpg" alt="Article 2" />
-        <span class="category">RELATIONSHIPS</span>
-        <div class="meta">By Admin · June 27, 2025</div>
-        <h3><a href="post.html">5 Signs You're Ready for a Serious Relationship</a></h3>
-      </div>
-
-      <div class="article-card">
-        <img src="images/thumb3.jpg" alt="Article 3" />
-        <span class="category">GROOMING</span>
-        <div class="meta">By Admin · June 26, 2025</div>
-        <h3><a href="post.html">Essential Grooming Tips for Modern Men</a></h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sidebar Section -->
-  <section class="bottom-section">
-    <div class="most-viewed">
-      <h3>Most Viewed</h3>
-      <ul>
-        <li><span>June 21</span> <a href="#">Boosting Confidence Instantly</a></li>
-        <li><span>June 18</span> <a href="#">Top 10 Watches Under $100</a></li>
-        <li><span>June 14</span> <a href="#">Morning Routine That Works</a></li>
-      </ul>
-    </div>
-
-    <div class="categories">
-      <h3>Browse by Category</h3>
-      <select onchange="goToCategory(this.value)">
-        <option value="">-- Select Category --</option>
-        <option value="fashion.html">Fashion</option>
-        <option value="grooming.html">Grooming</option>
-        <option value="lifestyle.html">Lifestyle</option>
-        <option value="technology.html">Technology</option>
-      </select>
-    </div>
-  </section>
-
-  <!-- Load More Button -->
-  <div class="load-more">
-    <button>LOAD MORE</button>
-  </div>
-
-  <!-- JS for Search & Dropdown -->
-  <script>
-    function toggleSearch() {
-      const searchBox = document.getElementById("searchBox");
-      searchBox.style.display = searchBox.style.display === "none" ? "inline-block" : "none";
     }
 
     function goToCategory(link) {
